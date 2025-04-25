@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Http\Controllers\API\AuthController;
 
 class User extends Authenticatable
 {
@@ -59,5 +60,16 @@ class User extends Authenticatable
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    // علاقة مع جدول displaesds
+    public function displaesd()
+    {
+        return $this->hasOne(Displaesd::class);
+    }
+
+    public function Authentication()
+    {
+        return $this->hasOne(AuthController::class);
     }
 }
